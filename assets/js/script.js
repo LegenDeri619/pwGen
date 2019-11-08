@@ -13,19 +13,27 @@ copyEl.addEventListener("click", function() {
 
 generateEl.addEventListener("click", function() {
     var pwlength = 0;
-            var genArray = [];
-            var numArray = ["0","1","2","3","4","5","6","7","8","9"];
-            var upperCaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-            var lowerCaseArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-            var specialCharArray = ["~","!","@","#","$","%","^","&","*","-","+","<",">","?",",",".","/"];
-            var userPW = [];          
+    var charSet = {
+        numString: "0123456789",
+        upperCaseString: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        lowerCaseString: "abcdefghijklmnopqrstuvwzyz",
+        specialCharString = "~!@#$%^&*-+<>?,./",
+        userPWstring: "",
+        outputPW: ""
+    };
+            //var genArray = [];
+            //var numArray = ["0","1","2","3","4","5","6","7","8","9"];
+            //var upperCaseArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+            //var lowerCaseArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+            //var specialCharArray = ["~","!","@","#","$","%","^","&","*","-","+","<",">","?",",",".","/"];
+            //var userPW = [];          
             
             var pwlength = prompt("How long do you want your password?");              
             
             if (isNaN(pwlength)) {
                 alert("You did not enter a valid number!");
             }
-            else if (pwlength === null || pwlength === false) {
+            else if (pwlength === null || pwlength === false || pwlength === "") {
                 alert("No password length entered!");
             }
             else if (pwlength < 0){
@@ -37,39 +45,44 @@ generateEl.addEventListener("click", function() {
             else {
                 var confirmNum = confirm("Do you want to include Numbers in you password");          
                 if (confirmNum === true){
-                    genArray = genArray.concat(numArray);                                     
+                    charSet.userPWstring += charSet.numString;
+                    console.log(charSet.userPWstring);                                     
                 }
-
                         
                 var confirmUpCase = confirm("Do you want to include Upper case Letters in you password?");          
                 if (confirmUpCase === true){
-                    genArray = genArray.concat(upperCaseArray);                           
+                    charSet.userPWstring += charSet.upperCaseString;   
+                    console.log(charSet.userPWstring);                        
                 }          
 
                 var confirmLowCase = confirm("Do you want to include Lower case Letters in you password?");
                 if (confirmLowCase === true) {              
-                    genArray = genArray.concat(lowerCaseArray);             
+                    charSet.userPWstring += charSet.lowerCaseString;   
+                    console.log(charSet.userPWstring);          
                 }
 
                 var confirmSpecChar = confirm("Do you want to include Special Characters in you password?");
                 if (confirmSpecChar === true) {
-                    genArray = genArray.concat(specialCharArray);             
+                    charSet.userPWstring += charSet.specialCharString;  
+                    console.log(charSet.userPWstring);           
                 }
 
-                userPWstring = "";
+                if (confirmNum === false && 
+                    confirmUpCase === false && 
+                    confirmLowCase === false && 
+                    confirmSpecChar === false) {
+                    alert("Invalid entries for password");
+                }
 
-                for (k=0; k < pwlength; k++){              
-                var num = Math.floor(Math.random() * genArray.length) + 1;
-                userPW[k] = genArray[num];
-                userPWstring += userPW[k];
+                for (i=0; i < userPWstring.length; i++) {              
+                var num = Math.floor(Math.random() * userPWstring.length) + 1;
+                charSet.outputPW[i] = charSet.userPWstring[num];
+                charSet.outputPW += charSet.userPWstring[i];
+                console.log(charSet.userPWstring);
                 }
             }    
 
-            if (confirmNum === false && confirmUpCase === false && confirmLowCase === false && confirmSpecChar === false) {
-                alert("Invalid entries for password");
-            }
             
-            console.log(userPW);
-            console.log(userPWstring);
-    return passwordTextAreaEl.textContent = userPWstring;
+
+    return passwordTextAreaEl.textContent = charSet.outputPW;
 });
