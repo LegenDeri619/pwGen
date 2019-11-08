@@ -19,33 +19,33 @@
          
             var confirmNum = confirm("Do you want to include Numbers in you password");          
               if (confirmNum === true){
-                genString = genString + numString;  
+                genString += numString;  
                 console.log(genString);                      
               }
           
             var confirmUpCase = confirm("Do you want to include Upper case Letters in you password?");          
               if (confirmUpCase === true){
-                genString = genString + upperCaseString; 
+                genString += upperCaseString; 
                 console.log(genString);               
               }          
 
             var confirmLowCase = confirm("Do you want to include Lower case Letters in you password?");
               if (confirmLowCase === true) {              
-                genString = genString + lowerCaseString;  
+                genString += lowerCaseString;  
                 console.log(genString);              
               }
 
             var confirmSpecChar = confirm("Do you want to include Special Characters in you password?");
               if (confirmSpecChar === true) {
-                genString = genString + specialChar;  
+                genString += specialChar;  
                 console.log(genString);              
               }
-
-            var getPWLength = genString.length;
-
-            for (k=0; k < pwlength; k++){              
-              var num = Math.floor(Math.random() * getPWLength) + 1;
-              userPW(k) = genString(num);
+            
+            for (k = 0; k < pwlength; k++) {              
+              var num = Math.floor(Math.random() * genString.length) + 1;
+              console.log(num);
+              userPW += genString[num];
+              console.log(userPW);
             }
 
             console.log(userPW);
