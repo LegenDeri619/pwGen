@@ -1,0 +1,14 @@
+.container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;    
+    font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    background-color: white;
+    text-align: center;
+    width: 50%;
+}
+
+#passwordTextArea {
+    width: 40%;
+}

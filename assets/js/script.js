@@ -2,14 +2,13 @@ var copyEl = document.querySelector("#copyToClipboard");
 var generateEl = document.querySelector("#generatePassword");
 var passwordTextAreaEl = document.querySelector("#passwordTextArea");
 
-copyEl.addEventListener("click", function() {
+function copyPW() {
     event.stopPropagation();
-    copyText = document.getElementById("#passwordTextArea");
+    var copyText = document.getElementById("passwordTextArea");
     copyText.select();
-    copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
     alert("Password copied to your clipboard: " + copyText.value);
-});
+};
 
 generateEl.addEventListener("click", function() {
     var pwlength = 0;

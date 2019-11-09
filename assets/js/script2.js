@@ -1,4 +1,3 @@
-var copyEl = document.querySelector("#copyToClipboard");
 var generateEl = document.querySelector("#generatePassword");
 var passwordTextAreaEl = document.querySelector("#passwordTextArea");
 
@@ -56,21 +55,21 @@ generateEl.addEventListener("click", function() {
             genArray = genArray.concat(specialCharArray);             
         }
 
-        userPWstring = "";
+        if (confirmNum === false && confirmUpCase === false && 
+            confirmLowCase === false && confirmSpecChar === false) {
+            alert("Invalid entries for password");
+        }      
+
+        var userPWstring = "";
 
         for (k=0; k < pwlength; k++){              
-        var num = Math.floor(Math.random() * genArray.length) + 1;
-        userPW[k] = genArray[num];
-        userPWstring += userPW[k];
+            var num = Math.floor(Math.random() * genArray.length) + 1;
+            userPW[k] = genArray[num];
+            userPWstring += userPW[k];
         }
     }    
 
-    if (confirmNum === false && 
-        confirmUpCase === false && 
-        confirmLowCase === false && 
-        confirmSpecChar === false) {
-        alert("Invalid entries for password");
-    }                      
+                    
             
     return passwordTextAreaEl.textContent = userPWstring;
 });
