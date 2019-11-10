@@ -20,7 +20,7 @@ generateEl.addEventListener("click", function() {
         userPWstring: "",
         outputPW: ""
     };
-    var pwlength = prompt("How long do you want your password?");              
+    var pwlength = prompt("Enter a password length between 8-128:");              
             
     if (isNaN(pwlength)) {
         alert("You did not enter a valid number!");
@@ -28,11 +28,11 @@ generateEl.addEventListener("click", function() {
     else if (pwlength === null || pwlength === false || pwlength === "") {
         alert("No password length entered!");
     }
-    else if (pwlength < 0){
-        alert("You entered a negative number!");
+    else if (pwlength < 8){
+        alert("You entered a length less than 8!");
     }
-    else if (pwlength > 1000) {
-        alert("You entered a password length greater than 1000 characters!");
+    else if (pwlength > 128) {
+        alert("You entered a password length greater than 128 characters!");
     }
     else {
         var confirmNum = confirm("Do you want to include Numbers in you password");          
