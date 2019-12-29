@@ -2,13 +2,17 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: auto;
     padding: 16px;    
     font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
     background-color: lightblue;
     text-align: center;
     width: 50%;
+    border-radius: 20px;
 }
 
 #passwordTextArea {
     width: 40%;
 }
+
